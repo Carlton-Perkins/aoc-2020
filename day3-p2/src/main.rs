@@ -27,7 +27,7 @@ fn main() {
     let file = matches.value_of("file").unwrap();
     let input = fs::read_to_string(file).unwrap();
 
-    let lines: Vec<&str> = input.split('\n').collect();
+    let lines: Vec<&str> = input.split('\n').filter(|s| !s.is_empty()).collect();
 
     let mut map: Vec<Vec<bool>> = vec![];
     for line in lines {

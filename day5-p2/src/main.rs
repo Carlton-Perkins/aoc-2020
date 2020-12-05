@@ -1,3 +1,14 @@
+/*
+--- Part Two ---
+Ding! The "fasten seat belt" signs have turned on. Time to find your seat.
+
+It's a completely full flight, so your seat should be the only missing boarding pass in your list. However, there's a catch: some of the seats at the very front and back of the plane don't exist on this aircraft, so they'll be missing from your list as well.
+
+Your seat wasn't at the very front or back, though; the seats with IDs +1 and -1 from yours will be in your list.
+
+What is the ID of your seat?
+*/
+
 use clap::{Arg, App};
 use std::{collections::HashSet, cmp::max, fs};
 use regex::Regex;
@@ -13,7 +24,7 @@ fn main() {
     let file = matches.value_of("file").unwrap();
     let input = fs::read_to_string(file).unwrap();
 
-    let lines: Vec<&str> = input.split(char::is_whitespace).collect();
+    let lines: Vec<&str> = input.split(char::is_whitespace).filter(|s| !s.is_empty()).collect();
     let line_reg = Regex::new(r"([FB]{7})([LR]{3})").unwrap();
 
     let mut max_id = 0;

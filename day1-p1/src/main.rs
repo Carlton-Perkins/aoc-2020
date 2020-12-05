@@ -37,7 +37,7 @@ fn main() {
     let file = matches.value_of("file").unwrap();
     let input = fs::read_to_string(file).unwrap();
 
-    let lines: Vec<&str> = input.split(char::is_whitespace).collect();
+    let lines: Vec<&str> = input.split(char::is_whitespace).filter(|s| !s.is_empty()).collect();
     let mut list: Vec<i32> = vec![];
     for line in lines {
         // println!("'{}'", line);
