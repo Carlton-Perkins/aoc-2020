@@ -2,11 +2,10 @@
 
 */
 
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use clap::{Arg, App};
 use std:: fs;
 use regex::Regex;
-use itertools::Itertools;
 
 #[derive(Clone)]
 struct Bag {
