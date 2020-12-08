@@ -36,9 +36,6 @@ For each group, count the number of questions to which everyone answered "yes". 
 use std::collections::HashSet;
 use clap::{Arg, App};
 use std:: fs;
-use regex::Regex;
-use itertools::Itertools;
-
 
 fn main() {
 
