@@ -67,6 +67,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "day10-p1"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "itertools",
+ "regex",
+]
+
+[[package]]
+name = "day10-p2"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "itertools",
+ "regex",
+]
+
+[[package]]
 name = "day2-p1"
 version = "0.1.0"
 dependencies = [
