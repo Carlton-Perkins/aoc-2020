@@ -54,6 +54,7 @@ What is the total number of distinct ways you can arrange the adapters to connec
 
 use clap::{App, Arg};
 use itertools::Itertools;
+use std::collections::HashMap;
 use std::fs;
 
 fn main() {
@@ -69,24 +70,42 @@ fn main() {
     let file = matches.value_of("file").unwrap();
     let input = fs::read_to_string(file).unwrap();
 
-    let lines: Vec<i32> = input.split('\n').filter(|s| !s.is_empty()).map(|x| x.parse::<i32>().unwrap()).sorted().collect();
-    // let end = *lines.iter().max().unwrap();
+    let lines: Vec<i64> = input
+        .split('\n')
+        .filter(|s| !s.is_empty())
+        .map(|x| x.parse::<i64>().unwrap())
+        .sorted()
+        .collect();
+    let end = *lines.iter().max().unwrap();
 
-    let mut count  = 1;
-    for current in lines.clone() {
-        let mut icount = 1;
-        if lines.contains(&(current + 1)) {
-            icount += 1;
-        }
-        if lines.contains(&(current + 2)) {
-            // icount += 1;
-        }
-        if lines.contains(&(current + 3)) {
-            icount += 1;
-        }
-        count *= icount
+    let count = count_combos(&lines, end, &mut HashMap::new());
 
+    println!("{}", count);
+}
+
+fn count_combos(adapters: &Vec<i64>, current: i64, memo: &mut HashMap<i64, i64>) -> i64 {
+    // If memo already contains the path, just use that count
+    if memo.contains_key(&current) {
+        return *memo.get(&current).unwrap();
     }
 
-    println!("{}",count);
+    // We have reached the end, with one path
+    if current == 0 {
+        memo.insert(current, 1);
+        return 1;
+    }
+
+    // If we are past 0 it means you have gone too far.
+    if current < 0 || !adapters.contains(&current) {
+        memo.insert(current, 0);
+        return 0;
+    }
+
+    // Otherwise calculate the real result
+    let count = count_combos(adapters, current - 1, memo)
+        + count_combos(adapters, current - 2, memo)
+        + count_combos(adapters, current - 3, memo);
+    memo.insert(current, count);
+
+    count
 }
