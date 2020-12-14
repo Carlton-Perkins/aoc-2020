@@ -45,8 +45,6 @@ The earliest bus you could take is bus ID 59. It doesn't depart until timestamp 
 What is the ID of the earliest bus you can take to the airport multiplied by the number of minutes you'll need to wait for that bus?
 */
 
-
-use regex::Regex;
 use clap::{Arg, App};
 use std:: fs;
 
