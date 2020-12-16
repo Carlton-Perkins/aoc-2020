@@ -5,7 +5,7 @@
 
 use regex::Regex;
 use clap::{Arg, App};
-use std::{collections::HashMap, fs, u64::MAX};
+use std::{collections::HashMap, fs};
 
 type Mask = Vec<char>;
 
