@@ -243,6 +243,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "day17-p1"
+version = "0.1.0"
+dependencies = [
+ "cgmath",
+ "clap",
+ "itertools",
+ "regex",
+]
+
+[[package]]
+name = "day17-p2"
+version = "0.1.0"
+dependencies = [
+ "cgmath",
+ "clap",
+ "itertools",
+ "regex",
+]
+
+[[package]]
 name = "day2-p1"
 version = "0.1.0"
 dependencies = [
